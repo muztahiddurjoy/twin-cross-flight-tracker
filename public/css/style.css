@@ -159,7 +159,6 @@ body{
 #battProgress{
     stroke-dashoffset: 165;
 }
-
 .circle-big .text {
   position: absolute;
   width: 100%;

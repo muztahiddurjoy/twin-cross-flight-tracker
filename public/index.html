@@ -97,8 +97,8 @@
                 <p class="my-1 text-xs text-white">Y axis: <span id="yAxis"></span></p>
                 <p class="my-1 text-xs text-white">Z axis: <span id="zAxis"></span></p>
             </div>
-            <div class="h-full">
-                <canvas class="h-96" id="gyrochart"></canvas>
+            <div class="h-80 flex items-center justify-center">
+                <img src="./src/rocket.png" height="auto" width="70px" alt="" id="gyroRocket">
             </div>
         </div>
         <div class="glass p-3 rounded-sm m-2">
@@ -161,7 +161,6 @@
         </div>
     </div>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script src="./js/typed.js"></script>
 <script src="js/anime.js"></script>

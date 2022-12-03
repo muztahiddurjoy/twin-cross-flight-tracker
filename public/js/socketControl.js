@@ -21,10 +21,10 @@ let chartbasearr = []
 const minute = document.getElementById('minute')
 const second = document.getElementById('seconds')
 //Gyro Data
-let xAxisarr = []
-let yAxisarr = []
-let zAxisarr = []
-
+const xAxis = document.getElementById('xAxis')
+const yAxis = document.getElementById('yAxis')
+const zAxis = document.getElementById('zAxis')
+const rocketImage = document.getElementById('gyroRocket')
 let address = null
 let typed = null
 
@@ -37,42 +37,6 @@ window.addEventListener('load',()=>{
         });
     }, 2000);
 })
-
-
-    const ctx = document.getElementById('gyrochart');
-    setInterval(() => {
-        chartbasearr.push(chartInd+1)
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-              labels: chartbasearr,
-              datasets: [{
-                label: 'X Axis',
-                data: xAxisarr,
-                borderWidth: 1
-              },
-              {
-                label: 'Y Axis',
-                data: yAxisarr,
-                borderWidth: 1
-              },
-              {
-                label: 'Z Axis',
-                data: zAxisarr,
-                borderWidth: 1
-              }
-            ]
-            },
-            options: {
-              scales: {
-                y: {
-                  beginAtZero: true
-                }
-              }
-            }
-          });
-    }, 50);
-   
 
 
 socket.on('message',function(message){
@@ -125,6 +89,16 @@ socket.on('received',function(data){
     rawIndicator.classList.remove('bg-red-700')
     rawIndicator.classList.add('bg-green-700')
     const json = JSON.parse(data)
+    xAxis.innerHTML = json.gyro.X
+    yAxis.innerHTML = json.gyro.Y
+    zAxis.innerHTML = json.gyro.Z
+
+    const vectorVal = Math.sqrt(Math.pow(parseInt(json.gyro.X),2)+Math.pow(parseInt(json.gyro.Y),2)+Math.pow(parseInt(json.gyro.Z),2))
+    const devVal = parseInt(json.gyro.Y)/vectorVal
+    const result = Math.acos(devVal)
+    rocketImage.style.rotate = result*(40/Math.PI)+"deg"
+    console.log(vectorVal)
+    // console.log(vectorVal)
     setTimeout(() => {
         rawIndicator.classList.remove('bg-green-700')
         rawIndicator.classList.add('bg-red-700')
@@ -137,7 +111,9 @@ socket.on('received',function(data){
     humid.style.strokeDashoffset = 330-(Number(json.temperature.humidity)*3.3)
     humidText.innerHTML = json.temperature.humidity
     tempText.innerHTML = json.temperature.temperature
+   
 })
+
 refresh.addEventListener('click',function(){
     socket.emit('device-request',{status:true})
 })

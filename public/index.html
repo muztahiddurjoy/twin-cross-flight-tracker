@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twin Cross Flight Tracker</title>
+    <link rel="stylesheet" href="css/framework.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="fixed flex flex-col items-center justify-center h-full w-full top-0 left-0 right-0 bottom-0 bg-black z-50" id="preloader">
+        <div class="h-60 w-60">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 959.4 527.4" style="enable-background:new 0 0 959.4 527.4;" xml:space="preserve">
+            <style type="text/css">
+                .st0{enable-background:new    ;}
+                .st1{fill:none;stroke:#FFFFFF;stroke-width:5;stroke-miterlimit:10;}
+                .st2{fill:none;stroke:url(#SVGID_00000128463692831349704370000007604110926407625875_);stroke-width:5;stroke-miterlimit:10;}
+                .st3{fill:none;stroke:#F9FFFF;stroke-width:5;stroke-miterlimit:10;}
+                .st4{fill:none;stroke:url(#SVGID_00000095306491808721735550000002447233063557094042_);stroke-width:5;stroke-miterlimit:10;}
+            </style>
+            <g class="st0">
+                <g>
+                    <defs>
+                        
+                            <rect class="left_side_up" id="SVGID_1_" x="436.1" y="367.5" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -149.7915 459.7076)" width="87.9" height="86.4"/>
+                    </defs>
+                    <clipPath class="left_side_up" id="SVGID_00000160188887120947033570000001660265147828576938_">
+                        <use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
+                    </clipPath>
+                </g>
+                <polygon class="st1 left_side_up" points="936.4,17.5 439.1,514.8 314.8,514.8 812.1,17.5 	"/>
+                
+                    <linearGradient class="grad1" id="SVGID_00000054267815254215443970000011980452943058296199_" gradientUnits="userSpaceOnUse" x1="937.785" y1="317.23" x2="479.1541" y2="317.23">
+                    <stop  offset="0" style="stop-color:#FFFFFF"/>
+                    <stop  offset="0.1106" style="stop-color:#F8F8F8"/>
+                    <stop  offset="0.2693" style="stop-color:#E5E5E5"/>
+                    <stop  offset="0.457" style="stop-color:#C6C6C6"/>
+                    <stop  offset="0.6669" style="stop-color:#9B9B9B"/>
+                    <stop  offset="0.8925" style="stop-color:#646464"/>
+                    <stop  offset="1" style="stop-color:#474747"/>
+                </linearGradient>
+                
+                    <polygon class="left_side_up" style="fill:none;stroke:url(#SVGID_00000054267815254215443970000011980452943058296199_);stroke-width:5;stroke-miterlimit:10;" points="
+                    480.6,183.3 542.7,121.1 935.4,513.8 811.1,513.8 	"/>
+                <polygon class="st3 left_side_up" points="646.3,17.5 149,514.8 24.7,514.8 522,17.5 	"/>
+                
+                    <linearGradient class="" id="SVGID_00000066498506301965134470000013371323358275168130_" gradientUnits="userSpaceOnUse" x1="22.3083" y1="214.5635" x2="481.983" y2="214.5635">
+                    <stop  offset="0" style="stop-color:#FFFFFF"/>
+                    <stop  offset="0.1763" style="stop-color:#FCFCFC"/>
+                    <stop  offset="0.3252" style="stop-color:#F1F1F1"/>
+                    <stop  offset="0.4643" style="stop-color:#E0E0E0"/>
+                    <stop  offset="0.5974" style="stop-color:#C7C7C7"/>
+                    <stop  offset="0.7262" style="stop-color:#A7A7A7"/>
+                    <stop  offset="0.8518" style="stop-color:#808080"/>
+                    <stop  offset="0.9727" style="stop-color:#535353"/>
+                    <stop  offset="1" style="stop-color:#474747"/>
+                </linearGradient>
+                
+                    <polygon class="left_side_up" style="fill:none;stroke:url(#SVGID_00000066498506301965134470000013371323358275168130_);stroke-width:5;stroke-miterlimit:10;" points="
+                    149,17.5 24.7,17.5 418.4,411.2 480.6,349 	"/>
+                    
+            </g>
+            </svg>
+        </div>
+        <p class="text-center text-white -mt-16 aero text-3xl pre_title"><span id="pretitle">Twin Cross</span></p>
+        <p class="text-center text-gray-300 text-sm mt-3 pre_title"><span id="subpre">Together we fly High!</span></p>
+    </div>
+    <div id="no_connection" class="bg_color fixed top-0 left-0 bottom-0 right-0 flex flex-col items-center justify-center z-10">
+        <p class="text-center text-white aero my-2 text-3xl"><span id="contitle"></span></p>
+        <p class="text-gray-400 text-xs text-center">Please select a device to establish a communication.<br> Please reconnect your receiver MCU and refresh the page if you cannot find your receiver</p>
+        <div class="flex items-center justify-center">
+        <select class="bg-transparent ring-1 text-white ring-white py-2 px-5 my-3" id="device_select">
+        </select>
+        <button class="py-2 px-5 mx-2 bg-transparent ring-1 ring-white text-white" id="refresh">Refresh</button>
+        </div>
+        <button class="py-2 px-5 rounded-md bg-slate-700 text-white transition-all ease-in-out duration-300" id="requestConnect">Connect</button>
+      <img src="./src/antenna.png" class="my-5" height="auto" width="300"/>
+    </div>
+    <div class="p-2 grid md:grid-cols-4">
+        
+        <div class="glass p-3 rounded-sm m-2">
+            <div class="flex items-center">
+                <p class="text-white">Raw Data</p>
+                <div class="h-3 w-3 rounded-full bg-red-700 mx-2" id="rawinDicator"></div>
+            </div>
+            <ul class="text-gray-300 text-xs mt-3 h-32 overflow-y-scroll custom-scroll" id="raw">
+            </ul>
+        </div>
+        <div class="glass p-3 rounded-sm col-span-2 row-span-3 m-2">
+            <div class="flex items-center">
+                <p class="text-white">Gyro Readings (2D)</p>
+            </div>
+            <div class="mt-3">
+                <p class="my-1 text-xs text-white">X axis: <span id="xAxis"></span></p>
+                <p class="my-1 text-xs text-white">Y axis: <span id="yAxis"></span></p>
+                <p class="my-1 text-xs text-white">Z axis: <span id="zAxis"></span></p>
+            </div>
+            <div class="h-full">
+                <canvas class="h-96" id="gyrochart"></canvas>
+            </div>
+        </div>
+        <div class="glass p-3 rounded-sm m-2">
+            <div class="flex items-center">
+                <p class="text-white">Battery Life</p>
+            </div>
+            <div>
+                <div class="circle-big">
+                    <div class="text">
+                      <p class="text-white text-xl"><span>50</span></p><div class="small">%</div>
+                    </div>
+                    <svg>
+                        <circle class="bg" cx="57" cy="57" r="52"></circle>
+                        <circle class="progress" cx="57" cy="57" r="52" id="battProgress"></circle>
+                    </svg>
+                </div>
+        </div>
+        </div>
+        <div class="glass p-3 rounded-sm m-2">
+            <div class="flex items-center">
+                <p class="text-white">Temperature</p>
+            </div>
+                <div>
+                      <div class="circle-big">
+                          <div class="text">
+                            <p class="text-white text-xl" id="tempText"><span>--</span></p><div class="small">° C</div>
+                          </div>
+                          <svg>
+                              <circle class="bg" cx="57" cy="57" r="52"></circle>
+                              <circle class="progress" cx="57" cy="57" r="52" id="tempProgress"></circle>
+                          </svg>
+                      </div>
+                      <p class="text-gray-300 text-xs my-2 italic text-center">*highest value 50° C</p>
+              </div>
+        </div>
+        <div class="glass p-3 rounded-sm m-2 row-span-2">
+            <div class="flex items-center">
+                <p class="text-white">Session Timer</p>
+            </div>
+            <div class="flex items-center justify-center h-full">
+                <p class="text-white text-5xl"><span id="minute">--</span> : <span id="seconds">--</span></p>
+            </div>
+        </div>
+        <div class="glass p-3 rounded-sm m-2">
+            <div class="flex items-center">
+                <p class="text-white">Humidity</p>
+            </div>
+                <div>
+                      <div class="circle-big">
+                          <div class="text">
+                            <p class="text-white text-xl" id="humidText"><span>--</span></p><div class="small">%</div>
+                          </div>
+                          <svg>
+                              <circle class="bg" cx="57" cy="57" r="52">-</circle>
+                              <circle class="progress" cx="57" cy="57" r="52" id="humidProgress"></circle>
+                          </svg>
+                      </div>
+                      <p class="text-gray-300 text-xs my-2 italic text-center">*highest value 100%</p>
+              </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="./js/typed.js"></script>
+<script src="js/anime.js"></script>
+<script src="./js/socketControl.js"></script>
+<script src="js/client.js"></script>
+</html>
